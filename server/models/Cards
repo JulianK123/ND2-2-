@@ -1,0 +1,44 @@
+
+module.exports = (Sequelize, DataTypes) =>{
+    const Cards = Sequelize.define("Cards",{
+        number:{
+            type: DataTypes.STRING,
+            primaryKey: true,
+            unique: true,
+            allowNull:false,
+            validate:{
+                notEmpty: true,
+                isCreditCard: true,
+            }
+        },
+        cvv:{
+            type: DataTypes.INTEGER,
+            unique: false,
+            allowNull:false,
+            validate:{
+                notEmpty:true,
+                isAlpha: true,
+                
+            }
+        },
+        date:{
+            type: DataTypes.STRING,
+            unique: false,
+            allowNull:false,
+            validate:{
+                notEmpty:true,
+                
+            }
+        },
+        money:{
+            type: DataTypes.STRING,
+            allowNull:false,
+            validate:{
+                notEmpty:true,
+            }
+        }        
+    },  {timestamps: false,}  
+  )
+
+    return Cards;
+}
